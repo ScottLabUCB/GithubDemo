@@ -38,7 +38,7 @@ We'll follow the git setup steps from github. We'll add a [name](https://help.gi
     - For example: `git config --global user.name "Mary Scott"`
     - Quotes are necessary if you have a space in your name
     - Check that this worked by running `git config --global user.name`
-1. Now you'll add your name. This should be your real name since it will be attached to your code.
+1. Now you'll add your email. It is recommended that you use your Berkeley email since you'll be working on lab projects.
     - Run `git config --global user.email "<YOUR EMAIL>"`
     - For example: `git config --global user.email "mary.scott@berkeley.edu"`
     - Check that this worked by running `git config --global user.email`
@@ -47,7 +47,7 @@ We'll follow the git setup steps from github. We'll add a [name](https://help.gi
 
 1. Start by creating a Github account. If you already have an acocunt try to sign in again.
     - You're viewing this page on Github and you should find a `Sign Up` button in the upper right.
-    - You'll sign-up with an email. It is recommended that you use your Berkeley email since you'll be working on lab projects.
+    - You'll sign-up with the email you used in step 2 when setting-up Git on your local computer. It is recommended that you use your Berkeley email since you'll be working on lab projects.
 1. You can now fiddle with a few settings if you'd like. Navigate to `Settings` using the dropdown in the upper right.
     - You can add an additional email address (under the `Emails` heading) if you'd like Github to send emails to another address.
     - You can change notification settings (under the `Notifications` heading) if you'd like to get fewer emails. The security alerts in particular can get a little annoying so you may want to uncheck that box.
