@@ -113,7 +113,25 @@ In this tutorial we'll learn about the git basics on the command line. Key ideas
 
 ## Tutorial: Collaborating on Code Using Github
 
-1. 
+1. Save your new code to Github!
+    -  You should have a new file and 2 commits from the tutuorial above.
+    - `git push` to send your commits to github.
+    - [You will likely get a `non-fast-forward` error.](https://help.github.com/en/github/using-git/dealing-with-non-fast-forward-errors)
+    - [Checkout Github's commits to see what it looks like.](https://github.com/ScottLabUCB/GithubDemo/commits/master)
+1. You'll need to update your branch before pushing
+    - `git pull --rebase` will take the commits on Github and put yours on top
+    - Checkout out `git log` now.
+    - Try `git push` again.
+    - You may need to repeat these steps since other people are also committing changes right now.
+1. TODO create branches
+1. TODO push branches
+1. TODO create pull requests
+1. TODO review pull requests
+1. TODO merge pull requests
+    
+    - The first time you run this it will fail and tell you to run a command.
+    - Run that command. Ex. `git push --set-upstream origin example_branch`. This associates your local branch with one on 
+    - 
 
 Github Tutorial
 - Git clone repo
