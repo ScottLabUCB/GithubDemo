@@ -80,24 +80,40 @@ Whenever you connect to Github from your local computer you need to provide some
     - You'll now run a git command to copy code from Github. Run `git clone git@github.com:ScottLabUCB/GithubDemo.git`.
     - You should now see a directory called `GithubDemo` in your folder. For example you can see this by running `ls`.
 
-## Tutorial: Using Git on the Command Line
+## Tutorial: Using Git on the Command Line to Create a Commit
 
-TODO
+In this tutorial we'll learn about the git basics on the command line. Key ideas are commits and branches.
+
+1. Open your terminal (Mac) or git shell (PC).
+1. If you have already cloned the `GithubDemo` then `cd` to that directory. Otherwise you'll perform the clone now.
+    - Go to a directory where you plan to keep code in the terminal. (Ex. `cd ~/Documents`)
+    - Run `git clone git@github.com:ScottLabUCB/GithubDemo.git`.
+    - Run `cd GithubDemo`
+    - View the files by running `ls`.
+1. Now we'll run a few commands to inspect the repo.
+    - `git log` will show you all the commits.
+    - `git log --pretty=format:"%h %s" --graph` will show you the commits in tree form.
+    - `git branch` will show you you're on the `master` branch.
+1. Now let's add a file and create a commit.
+    - `git status` will show you nothing is staged
+    - Now create a new file in this directory.
+    - `git status` will show you there is a new untracked file.
+    - `git diff` will show you what has changed
+    - `git add <filename>` or `git add .` to stage this new file for your commit.
+    - `git status` will show you that the file is staged.
+    - `git commit -m "My first commit"` to create a new commit containing the staged files.
+    - `git status` will show you that your code is committed.
+    - `git log` will show you your new commit.
+1. Now let's update the file and create a new commit.
+    - Edit the file you created.
+    - `git diff` to see the changes
+    - `git status` to see that the changes need to be added.
+    - `git commit -a -m "My second commit"` will add and commit the new code. The `-a` is a shorthand for `git add`.
+    - `git log` to see you new commit exists.
 
 ## Tutorial: Collaborating on Code Using Github
 
-TODO
-
-## Other Resources
-
-- organization
-      - https://github.com/organizations/plan
-      - https://github.berkeley.edu/login
-      - Example org: https://github.com/orgs/sfbrigade
-- everyone add ssh (you’ll need to do this for every computer your work from)
-      - If you have a key: https://help.github.com/en/github/authenticating-to-github/checking-for-existing-ssh-keys
-      - Generate a new key: https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key
-      - Add key to GitHub: https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account
+1. 
 
 Github Tutorial
 - Git clone repo
@@ -117,3 +133,44 @@ Github Tutorial
       - Aliases
       - Github security alerts
 
+TODO
+
+## Other Resources
+
+**Git Commands Reference**
+
+[Check out the documentation!](https://git-scm.com/docs) Remember you can always add `-h` to a command to see the help.
+
+- `git clone` to pull the repo from Github
+- `git log` to view commits in your current branch
+- `git branch` to view your active branch and other branches
+- `git checkout -b <branch>` to create a new branch
+- `git checkout <branch>` to checkout an existing branch
+- `git diff` to see what changes you've made to your files
+- `git status` to view file status
+- `git add <file>` to stage the file or `git add .` to add all the files in the current directory.
+- `git commit -m <message>` to create a commit.
+- `git push` to push your changes to 
+- `git pull` to pull changes from Github.
+
+**What to do if everything is messed up**
+
+- `git fetch origin`
+- `git reset --hard origin/master`
+
+- `git commit -am "temp"`
+- `git checkout -b backup`
+
+- `git reset HEAD~1`
+
+- `git reset <SHA>`
+
+**Setting Up Repos on Github**
+
+- [Check out gitignore files which helps git ignore files.](https://help.github.com/en/github/using-git/ignoring-files)
+- [Github will render all files in markdown.](https://guides.github.com/features/mastering-markdown/)
+
+**How to administer organizations**
+- Example organization https://github.com/orgs/sfbrigade
+- Users are put in teams and teams are assigned permissions to repos. This ensures you have consistent permissions for the whole organization.
+- External collaborators can be given access to specific repos.
