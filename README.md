@@ -161,38 +161,6 @@ In this tutorial we'll learn about the git basics on the command line. Key ideas
     - `git branch` to check what branches you have and ensure you're on `master`
     - `git branch -D first_branch` to delete the `first_branch` branch
 
-1. Review a pull request
-
-
-    - `git log --all --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short` 
-
-1. TODO push branches
-1. TODO create pull requests
-1. TODO review pull requests
-1. TODO merge pull requests
-    
-    - 
-
-Github Tutorial
-- Git clone repo
-- Git log
-- new file
-- Git status
-- Git add
-- Git status
-- Git commit
-- Git status
-- Git log, new she
-- Github page
-      - Look at commits, no change
-- Git push
-      - Uh oh, out of date
-- Random
-      - Aliases
-      - Github security alerts
-
-TODO
-
 ## Other Resources
 
 **Git Commands Reference**
@@ -211,23 +179,54 @@ TODO
 - `git status` to view file status
 - `git add <file>` to stage the file or `git add .` to add all the files in the current directory
 - `git commit -m <message>` to create a commit
+- `git commit -a -m <message>` to add all files and create a commit
 - `git push` to push your changes to 
 - `git pull` to pull changes from Github
 - `git pull --rebase` will put your recent changes in front of the new changes from Github
 
 **What to do if everything is messed up**
 
+Before you do anything drastic it is a good idea to back-up your code. You can do this by putting everything into a backup branch.
+- `git add .` to add everything to the commit
+- `git commit -m "TEMP"` to create a temporary commit
+- `git checkout -b backup` to create a backup branch
+- `git checkout <old_branch>` to go back to your old branch. Now you can make changes in `old_branch` and your code will still be backed up in the `backup` branch.
+- If you mess things up you can always reset `old_branch` back to the `backup`. In the `old_branch` run `git reset --hard backup`.
+
+If you local branch is messed up and you want to reset to what exists in Github (`origin`).
 - `git fetch origin`
-- `git reset --hard origin/master`
+- `git reset --hard origin/<branch>`. For example to reset the `master` branch: `git reset --hard origin/master`
 
-- `git commit -a -m "temp"`
-- `git checkout -b backup`
+If you added files you didn't intend to
+- `git reset`
 
+If you need to modify the prior commit message
+- `git commit --amend -m "New commit message"`
+
+If you want to undo the prior commit
 - `git reset HEAD~1`
 
-- `git reset <SHA>`
+If you want to undo the prior commits up to but not including a specific commit hash
+- `git reset <HASH>`
 
-changes on wrong branch
+If you made changes on the wrong branch
+- `git reset HEAD~1` to undo the prior commit
+- `git stash` to store the code in a temporary commit
+- `git checkout <branch>` to go to the branch where you want to make changes
+- `git stash pop` to reload the changes you made
+- `git diff` to double check that you brought over the changes that you wanted
+- Now your code changes can be added to a new commit
+
+You get a message like `Your local changes to the following files would be overwritten by checkout`
+- You're likely trying to checkout a different branch but you have code changes that conflict with that branch.
+- `git stash` to store the code in a temporary commit
+- `git stash pop` to reload the changes you made when you're in the branch where you want those changes to be
+- Alternatively you can create a commit before checking out the other branch.
+
+You get a message about `non-fast-forward updates were rejected`
+- This means that there is new code on Github that you need to pull before pushing
+- Try running `git pull --rebase` to pull down the new code and move your code in front of that code
+- [Further documentation](https://help.github.com/en/github/using-git/dealing-with-non-fast-forward-errors)
 
 **Setting Up Repos on Github**
 
