@@ -80,40 +80,164 @@ Whenever you connect to Github from your local computer you need to provide some
     - You'll now run a git command to copy code from Github. Run `git clone git@github.com:ScottLabUCB/GithubDemo.git`.
     - You should now see a directory called `GithubDemo` in your folder. For example you can see this by running `ls`.
 
-## Tutorial: Using Git on the Command Line
+## Tutorial: Using Git on the Command Line to Create a Commit
 
-TODO
+In this tutorial we'll learn about the git basics on the command line. Key ideas are commits and branches.
+
+1. Open your terminal (Mac) or git shell (PC).
+1. If you have already cloned the `GithubDemo` then `cd` to that directory. Otherwise you'll perform the clone now.
+    - Go to a directory where you plan to keep code in the terminal. (Ex. `cd ~/Documents`, [more info on the terminal here](https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners))
+    - Run `git clone git@github.com:ScottLabUCB/GithubDemo.git`.
+    - Run `cd GithubDemo`
+    - View the files by running `ls`.
+1. Now we'll run a few commands to inspect the repo.
+    - `git log` will show you all the commits.
+    - `git branch` will show you you're on the `master` branch.
+1. Now let's add a file and create a commit.
+    - `git status` will show you nothing is staged
+    - Now create a new file in this directory.
+    - `git status` will show you there is a new untracked file.
+    - `git diff` will show you what has changed
+    - `git add <filename>` or `git add .` to respectively stage this new file or all the files in the directory for your commit.
+    - `git status` will show you that the file is staged.
+    - `git commit -m "Created new file"` to create a new commit containing the staged files.
+    - `git status` will show you that your code is committed.
+    - `git log` will show you your new commit.
+1. Now let's update the file and create a new commit.
+    - Edit the file you created.
+    - `git diff` to see the changes
+    - `git status` to see that the changes need to be added.
+    - `git commit -a -m "Updated file"` will add and commit the new code. The `-a` is a shorthand for `git add`.
+    - `git log` to see you new commit exists.
 
 ## Tutorial: Collaborating on Code Using Github
 
-TODO
+1. Save your new code to Github!
+    -  You should have a new file and 2 commits from the tutuorial above.
+    - `git push` to send your commits to github.
+    - [You will likely get a `non-fast-forward` error.](https://help.github.com/en/github/using-git/dealing-with-non-fast-forward-errors)
+    - [Checkout Github's commits to see what it looks like.](https://github.com/ScottLabUCB/GithubDemo/commits/master)
+1. You'll need to update your branch before pushing
+    - `git pull --rebase` will take the commits on Github and put yours on top
+    - Checkout out `git log` now.
+    - Try `git push` again.
+    - You may need to repeat these steps since other people are also committing changes right now.
+1. So the above process was a pain, enter branches! Let's create a branch for your work.
+    - `git branch` will show you you're in the `master` branch
+    - `git pull` to update the `master` branch with the latest commits from Github.
+    - `git checkout -b first_branch` to create and checkout a new branch called `first_branch`
+    - `git branch` will show you you're in the `first_branch` branch
+1. Now modify the file that you created in the first tutorial and create a commit. (`git commit -a -m "Modified file"`)
+    - `git log` will show you your new commit
+1. You'll send you new changes up to github.
+    - `git branch` to double check that you are in the `first_branch` branch
+    - `git push` to send your new commits to github
+    - The first time you run this it will fail and tell you to run a command.
+    - Run that command. Ex. `git push --set-upstream origin first_branch`. This associates your local branch with one of the same name on Github (Github is referenced as `origin`).
+    - `git push` again to actually send your code up.
+    - [You should now see your branch on github.](https://github.com/ScottLabUCB/GithubDemo/branches)
+1. You'll create a pull request to merge you new changes into master
+    - Click on your branch in Github and click `New Pull Request`
+    - It is recommended to add a useful description and assign some reviewers
+1. You'll add another commit to your pull request and deal with a merge conflic.
+    - Add your name to the `trained.txt` file, commit and push.
+    - On github you'll see you need to resolve a merge conflict
+1. Get review on your pull request
+    - Make sure your pull request has a few reviewers assigned
+    - [Go find a few pull requests to review](https://github.com/ScottLabUCB/GithubDemo/pulls)
+    - Add a few comments on some pull requests
+    - Approve the other pull requests
+1. Merge your pull request
+    - Go back to your pull request and deal with any remaining merge conflicts if they exist
+    - Press merge
+    - Delete the branch
+1. Let's check that everything worked
+    - [Check for your code in the repo on Github](https://github.com/ScottLabUCB/GithubDemo)
+    - [Check for you commits in Github](https://github.com/ScottLabUCB/GithubDemo/commits/master)
+1. Update your local repo and clean up
+    - `git checkout master` to return to the `master` branch
+    - `git pull` to update the master branch
+    - `git log` to check that the new commits have downloaded
+    - `git branch` to check what branches you have and ensure you're on `master`
+    - `git branch -D first_branch` to delete the `first_branch` branch
 
 ## Other Resources
 
-- organization
-      - https://github.com/organizations/plan
-      - https://github.berkeley.edu/login
-      - Example org: https://github.com/orgs/sfbrigade
-- everyone add ssh (you’ll need to do this for every computer your work from)
-      - If you have a key: https://help.github.com/en/github/authenticating-to-github/checking-for-existing-ssh-keys
-      - Generate a new key: https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key
-      - Add key to GitHub: https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account
+**Git Commands Reference**
 
-Github Tutorial
-- Git clone repo
-- Git log
-- new file
-- Git status
-- Git add
-- Git status
-- Git commit
-- Git status
-- Git log, new she
-- Github page
-      - Look at commits, no change
-- Git push
-      - Uh oh, out of date
-- Random
-      - Aliases
-      - Github security alerts
+[Check out the documentation!](https://git-scm.com/docs) Remember you can always add `-h` to a command to see the help.
 
+[Also if you're getting tired of typing long commands you can create aliases.](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases)
+
+- `git clone` to pull the repo from Github
+- `git log` to view commits in your current branch
+- `git branch` to view your active branch and other branches
+- `git checkout -b <branch>` to create a new branch
+- `git checkout <branch>` to checkout an existing branch
+- `git branch -D <branch>` to remove a branch
+- `git diff` to see what changes you've made to your files
+- `git status` to view file status
+- `git add <file>` to stage the file or `git add .` to add all the files in the current directory
+- `git commit -m <message>` to create a commit
+- `git commit -a -m <message>` to add all files and create a commit
+- `git push` to push your changes to 
+- `git pull` to pull changes from Github
+- `git pull --rebase` will put your recent changes in front of the new changes from Github
+
+**What to do if everything is messed up**
+
+Before you do anything drastic it is a good idea to back-up your code. You can do this by putting everything into a backup branch.
+- `git add .` to add everything to the commit
+- `git commit -m "TEMP"` to create a temporary commit
+- `git checkout -b backup` to create a backup branch
+- `git checkout <old_branch>` to go back to your old branch. Now you can make changes in `old_branch` and your code will still be backed up in the `backup` branch.
+- If you mess things up you can always reset `old_branch` back to the `backup`. In the `old_branch` run `git reset --hard backup`.
+
+If you local branch is messed up and you want to reset to what exists in Github (`origin`).
+- `git fetch origin`
+- `git reset --hard origin/<branch>`. For example to reset the `master` branch: `git reset --hard origin/master`
+
+If you added files you didn't intend to
+- `git reset`
+
+If you need to modify the prior commit message
+- `git commit --amend -m "New commit message"`
+
+If you want to undo the prior commit
+- `git reset HEAD~1`
+
+If you want to undo the prior commits up to but not including a specific commit hash
+- `git reset <HASH>`
+
+If you made changes on the wrong branch
+- `git reset HEAD~1` to undo the prior commit
+- `git stash` to store the code in a temporary commit
+- `git checkout <branch>` to go to the branch where you want to make changes
+- `git stash pop` to reload the changes you made
+- `git diff` to double check that you brought over the changes that you wanted
+- Now your code changes can be added to a new commit
+
+You get a message like `Your local changes to the following files would be overwritten by checkout`
+- You're likely trying to checkout a different branch but you have code changes that conflict with that branch.
+- `git stash` to store the code in a temporary commit
+- `git stash pop` to reload the changes you made when you're in the branch where you want those changes to be
+- Alternatively you can create a commit before checking out the other branch.
+
+You get a message about `non-fast-forward updates were rejected`
+- This means that there is new code on Github that you need to pull before pushing
+- Try running `git pull --rebase` to pull down the new code and move your code in front of that code
+- [Further documentation](https://help.github.com/en/github/using-git/dealing-with-non-fast-forward-errors)
+
+**Setting Up Repos on Github**
+
+- [Check out gitignore files which helps git ignore files.](https://help.github.com/en/github/using-git/ignoring-files)
+    - [Standard gitignore files can be found in Github!](https://github.com/github/gitignore)
+- [Github will render all files in markdown.](https://guides.github.com/features/mastering-markdown/)
+
+**How to administer organizations**
+- Example organization https://github.com/orgs/sfbrigade
+- Users are put in teams and teams are assigned permissions to repos. This ensures you have consistent permissions for the whole organization.
+    - [Documentation on adding a user to a team](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-organization-members-to-a-team)
+    - [Documentation on creating teams](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/creating-a-team)
+    - [Documentation on team permissions](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/managing-team-access-to-an-organization-repository)
+- External collaborators can be given access to specific repos.
