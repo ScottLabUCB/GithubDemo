@@ -129,14 +129,37 @@ In this tutorial we'll learn about the git basics on the command line. Key ideas
     - `git branch` will show you you're in the `first_branch` branch
 1. Now modify the file that you created in the first tutorial and create a commit. (`git commit -a -m "Modified file"`)
     - `git log` will show you your new commit
-1. You'll send you new changes up to github and create a pull request.
+1. You'll send you new changes up to github.
     - `git branch` to double check that you are in the `first_branch` branch
     - `git push` to send your new commits to github
     - The first time you run this it will fail and tell you to run a command.
-    - Run that command. Ex. `git push --set-upstream origin first_branch`. This associates your local branch with one on 
-1. Modify the readme
-
-
+    - Run that command. Ex. `git push --set-upstream origin first_branch`. This associates your local branch with one of the same name on Github (Github is referenced as `origin`).
+    - `git push` again to actually send your code up.
+    - [You should now see your branch on github.](https://github.com/ScottLabUCB/GithubDemo/branches)
+1. You'll create a pull request to merge you new changes into master
+    - Click on your branch in Github and click `New Pull Request`
+    - It is recommended to add a useful description and assign some reviewers
+1. You'll add another commit to your pull request and deal with a merge conflic.
+    - Add your name to the `trained.txt` file, commit and push.
+    - On github you'll see you need to resolve a merge conflict
+1. Get review on your pull request
+    - Make sure your pull request has a few reviewers assigned
+    - [Go find a few pull requests to review](https://github.com/ScottLabUCB/GithubDemo/pulls)
+    - Add a few comments on some pull requests
+    - Approve the other pull requests
+1. Merge your pull request
+    - Go back to your pull request and deal with any remaining merge conflicts if they exist
+    - Press merge
+    - Delete the branch
+1. Let's check that everything worked
+    - [Check for your code in the repo on Github](https://github.com/ScottLabUCB/GithubDemo)
+    - [Check for you commits in Github](https://github.com/ScottLabUCB/GithubDemo/commits/master)
+1. Update your local repo and clean up
+    - `git checkout master` to return to the `master` branch
+    - `git pull` to update the master branch
+    - `git log` to check that the new commits have downloaded
+    - `git branch` to check what branches you have and ensure you're on `master`
+    - `git branch -D first_branch` to delete the `first_branch` branch
 
 1. Review a pull request
 
@@ -183,6 +206,7 @@ TODO
 - `git branch` to view your active branch and other branches
 - `git checkout -b <branch>` to create a new branch
 - `git checkout <branch>` to checkout an existing branch
+- `git branch -D <branch>` to remove a branch
 - `git diff` to see what changes you've made to your files
 - `git status` to view file status
 - `git add <file>` to stage the file or `git add .` to add all the files in the current directory
@@ -202,6 +226,8 @@ TODO
 - `git reset HEAD~1`
 
 - `git reset <SHA>`
+
+changes on wrong branch
 
 **Setting Up Repos on Github**
 
