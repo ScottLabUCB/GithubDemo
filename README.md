@@ -86,29 +86,28 @@ In this tutorial we'll learn about the git basics on the command line. Key ideas
 
 1. Open your terminal (Mac) or git shell (PC).
 1. If you have already cloned the `GithubDemo` then `cd` to that directory. Otherwise you'll perform the clone now.
-    - Go to a directory where you plan to keep code in the terminal. (Ex. `cd ~/Documents`)
+    - Go to a directory where you plan to keep code in the terminal. (Ex. `cd ~/Documents`, [more info on the terminal here](https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners))
     - Run `git clone git@github.com:ScottLabUCB/GithubDemo.git`.
     - Run `cd GithubDemo`
     - View the files by running `ls`.
 1. Now we'll run a few commands to inspect the repo.
     - `git log` will show you all the commits.
-    - `git log --pretty=format:"%h %s" --graph` will show you the commits in tree form.
     - `git branch` will show you you're on the `master` branch.
 1. Now let's add a file and create a commit.
     - `git status` will show you nothing is staged
     - Now create a new file in this directory.
     - `git status` will show you there is a new untracked file.
     - `git diff` will show you what has changed
-    - `git add <filename>` or `git add .` to stage this new file for your commit.
+    - `git add <filename>` or `git add .` to respectively stage this new file or all the files in the directory for your commit.
     - `git status` will show you that the file is staged.
-    - `git commit -m "My first commit"` to create a new commit containing the staged files.
+    - `git commit -m "Created new file"` to create a new commit containing the staged files.
     - `git status` will show you that your code is committed.
     - `git log` will show you your new commit.
 1. Now let's update the file and create a new commit.
     - Edit the file you created.
     - `git diff` to see the changes
     - `git status` to see that the changes need to be added.
-    - `git commit -a -m "My second commit"` will add and commit the new code. The `-a` is a shorthand for `git add`.
+    - `git commit -a -m "Updated file"` will add and commit the new code. The `-a` is a shorthand for `git add`.
     - `git log` to see you new commit exists.
 
 ## Tutorial: Collaborating on Code Using Github
@@ -123,14 +122,32 @@ In this tutorial we'll learn about the git basics on the command line. Key ideas
     - Checkout out `git log` now.
     - Try `git push` again.
     - You may need to repeat these steps since other people are also committing changes right now.
-1. TODO create branches
+1. So the above process was a pain, enter branches! Let's create a branch for your work.
+    - `git branch` will show you you're in the `master` branch
+    - `git pull` to update the `master` branch with the latest commits from Github.
+    - `git checkout -b first_branch` to create and checkout a new branch called `first_branch`
+    - `git branch` will show you you're in the `first_branch` branch
+1. Now modify the file that you created in the first tutorial and create a commit. (`git commit -a -m "Modified file"`)
+    - `git log` will show you your new commit
+1. You'll send you new changes up to github and create a pull request.
+    - `git branch` to double check that you are in the `first_branch` branch
+    - `git push` to send your new commits to github
+    - The first time you run this it will fail and tell you to run a command.
+    - Run that command. Ex. `git push --set-upstream origin first_branch`. This associates your local branch with one on 
+1. Modify the readme
+
+
+
+1. Review a pull request
+
+
+    - `git log --all --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short` 
+
 1. TODO push branches
 1. TODO create pull requests
 1. TODO review pull requests
 1. TODO merge pull requests
     
-    - The first time you run this it will fail and tell you to run a command.
-    - Run that command. Ex. `git push --set-upstream origin example_branch`. This associates your local branch with one on 
     - 
 
 Github Tutorial
@@ -159,6 +176,8 @@ TODO
 
 [Check out the documentation!](https://git-scm.com/docs) Remember you can always add `-h` to a command to see the help.
 
+[Also if you're getting tired of typing long commands you can create aliases.](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases)
+
 - `git clone` to pull the repo from Github
 - `git log` to view commits in your current branch
 - `git branch` to view your active branch and other branches
@@ -166,17 +185,18 @@ TODO
 - `git checkout <branch>` to checkout an existing branch
 - `git diff` to see what changes you've made to your files
 - `git status` to view file status
-- `git add <file>` to stage the file or `git add .` to add all the files in the current directory.
-- `git commit -m <message>` to create a commit.
+- `git add <file>` to stage the file or `git add .` to add all the files in the current directory
+- `git commit -m <message>` to create a commit
 - `git push` to push your changes to 
-- `git pull` to pull changes from Github.
+- `git pull` to pull changes from Github
+- `git pull --rebase` will put your recent changes in front of the new changes from Github
 
 **What to do if everything is messed up**
 
 - `git fetch origin`
 - `git reset --hard origin/master`
 
-- `git commit -am "temp"`
+- `git commit -a -m "temp"`
 - `git checkout -b backup`
 
 - `git reset HEAD~1`
@@ -186,9 +206,13 @@ TODO
 **Setting Up Repos on Github**
 
 - [Check out gitignore files which helps git ignore files.](https://help.github.com/en/github/using-git/ignoring-files)
+    - [Standard gitignore files can be found in Github!](https://github.com/github/gitignore)
 - [Github will render all files in markdown.](https://guides.github.com/features/mastering-markdown/)
 
 **How to administer organizations**
 - Example organization https://github.com/orgs/sfbrigade
 - Users are put in teams and teams are assigned permissions to repos. This ensures you have consistent permissions for the whole organization.
+    - [Documentation on adding a user to a team](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-organization-members-to-a-team)
+    - [Documentation on creating teams](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/creating-a-team)
+    - [Documentation on team permissions](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/managing-team-access-to-an-organization-repository)
 - External collaborators can be given access to specific repos.
