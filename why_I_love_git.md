@@ -1,4 +1,5 @@
-#Why I love git
+# Why I love git
+
 The pull request is a universal command. I love git. 
 Git is so great because it's as a unit of work, and now this commit that exists is my entire project. 
 I can pull it in, just like that. There's no being an outlier. 
